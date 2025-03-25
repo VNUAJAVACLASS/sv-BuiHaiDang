@@ -1,0 +1,84 @@
+
+public class PhanSo {
+	int ts;
+	int ms;
+
+	public PhanSo() {
+	}
+
+	public PhanSo(int ts, int ms) {
+		this.ts = ts;
+		this.ms = ms;
+	}
+
+	public PhanSo congPS(PhanSo ps) {
+		int ts_new = this.ts * ps.ms + this.ms * ps.ts;
+		int ms_new = this.ms * ps.ms;
+
+		return new PhanSo(ts_new, ms_new);
+	}
+
+	public PhanSo truPS(PhanSo ps) {
+		int ts_new = this.ts * ps.ms - this.ms * ps.ts;
+		int ms_new = this.ms * ps.ms;
+
+		return new PhanSo(ts_new, ms_new);
+	}
+
+	public PhanSo nhanPS(PhanSo ps) {
+		int ts_new = this.ts * ps.ts;
+		int ms_new = this.ms * ps.ms;
+
+		return new PhanSo(ts_new, ms_new);
+	}
+
+	public PhanSo chiaPS(PhanSo ps) {
+		int ts_new = this.ts * ps.ms;
+		int ms_new = this.ms * ps.ts;
+
+		return new PhanSo(ts_new, ms_new);
+	}
+
+	public boolean ktPSToiGian() {
+		int kq = timUCLN(Math.abs(ts), Math.abs(ms));
+
+		return kq == 1;
+	}
+
+	public int timUCLN(int a, int b) {
+		while (b != 0) {
+			int temp = b;
+			b = a % b;
+			a = temp;
+		}
+		return a;
+	}
+
+	public PhanSo rutGonPS(PhanSo ps) {
+		int ucln = timUCLN(Math.abs(ts), Math.abs(ms));
+
+		return new PhanSo(ts / ucln, ms / ucln);
+
+	}
+	
+	public void inPS(PhanSo ps) {
+		System.out.println("Phan so: "+ ps.ts + "/" + ps.ms);
+	}
+
+	public static void main(String[] args) {
+		PhanSo phanSo = new PhanSo(10, 7);
+		System.out.println("Phan so toi gian: " + phanSo.ktPSToiGian());
+		phanSo.inPS(phanSo);
+
+		
+		
+		PhanSo phanSo2 = new PhanSo();
+		phanSo2.inPS(phanSo2);
+
+		
+		
+		
+
+	}
+
+}
