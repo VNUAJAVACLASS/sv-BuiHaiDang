@@ -5,14 +5,18 @@
     <fullyQualifiedTypeName name="javax.swing.event.TableModelListener"/>
     <fullyQualifiedTypeName name="TamGiac"/>
     <fullyQualifiedTypeName name="Diem"/>
-    <fullyQualifiedTypeName name="Subject"/>
     <fullyQualifiedTypeName name="java.lang.Math"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="Student"/>
     <fullyQualifiedTypeName name="Lecturer"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="HRM"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="Human"/>
+    <fullyQualifiedTypeName name="Student"/>
+    <fullyQualifiedTypeName name="PythonSubject"/>
+    <fullyQualifiedTypeName name="JavaSubject"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="Subject"/>
 </qualifiedTypeNameHistroy>
