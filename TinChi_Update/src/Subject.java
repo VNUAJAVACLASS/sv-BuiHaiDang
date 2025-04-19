@@ -1,11 +1,9 @@
 
-public abstract class Subject {
+public abstract class Subject implements iCreditSubject{
 	private String subjectCode;
 	private String subjectName;
 	private int credit;
-	private float attendanceMark;
-	private float midExamMark;
-	private float finalExamMark;
+
 
 	public Subject() {
 		super();
@@ -17,10 +15,6 @@ public abstract class Subject {
 		this.credit = credit;
 	}
 	
-	
-
-	// Tinh diem hoc phan
-	public abstract float calSubjectMark();
 
 	// Diem thang 4
 	public float calConversionMark() {
@@ -134,37 +128,16 @@ public abstract class Subject {
 		this.credit = credit;
 	}
 
-	public float getAttendanceMark() {
-		return attendanceMark;
-	}
-
-	public void setAttendanceMark(float attendanceMark) {
-		this.attendanceMark = attendanceMark;
-	}
-
-	public float getMidExamMark() {
-		return midExamMark;
-	}
-
-	public void setMidExamMark(float midExamMark) {
-		this.midExamMark = midExamMark;
-	}
-
-	public float getFinalExamMark() {
-		return finalExamMark;
-	}
-
-	public void setFinalExamMark(float finalExamMark) {
-		this.finalExamMark = finalExamMark;
-	}
-
 	@Override
 	public String toString() {
-		return "Subject [subjectCode=" + subjectCode + ", subjectName=" + subjectName + ", credit=" + credit
-				+ ", Mark(" + attendanceMark + "," + midExamMark + ","
-				+ finalExamMark + ")  ";
+		return super.toString();
 	}
-	
+
+
+	@Override
+	public float calSubjectMark() {
+		return 0;
+	}
 	
 	
 

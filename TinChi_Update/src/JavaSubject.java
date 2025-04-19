@@ -1,18 +1,30 @@
 
 public class JavaSubject extends Subject {
+	private float attendanceMark;
+	private float midExamMark;
+	private float finalExamMark;
+
+	public JavaSubject() {
+		super();
+	}
+
+	public JavaSubject(float attendanceMark, float midExamMark, float finalExamMark) {
+		super();
+		this.attendanceMark = attendanceMark;
+		this.midExamMark = midExamMark;
+		this.finalExamMark = finalExamMark;
+	}
 
 	@Override
 	public float calSubjectMark() {
-		return (float) (getAttendanceMark() * 0.1 + getMidExamMark() * 0.3 + getFinalExamMark() * 0.6);
+		return attendanceMark * 0.1f + midExamMark * 0.4f + finalExamMark * 0.6f;
 	}
 
 	@Override
 	public String toString() {
 		float sumMark = calSubjectMark();
-		return "Java [subjectCode=" + getSubjectCode() 
-				+ ", attendanceMark=" + getAttendanceMark() + ", midExamMark=" + getMidExamMark() + ", finalExamMark="
-				+ getFinalExamMark() +" ,Sum= "+sumMark+ "]";
+		return "Java [subjectCode=" + getSubjectCode() + ", attendanceMark=" + attendanceMark + ", midExamMark="
+				+ midExamMark + ", finalExamMark=" + finalExamMark + " ,Sum= " + sumMark + "]";
 	}
-	
-	
+
 }

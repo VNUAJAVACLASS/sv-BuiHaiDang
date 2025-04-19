@@ -1,12 +1,13 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Student extends Human {
 	private String class_;
-	private HashMap<String, Subject> subjectMap = new HashMap<String, Subject>();
+	private Map<String, iCreditSubject> subjectMap = new HashMap<>();
 
 	public Student() {
 	}
@@ -39,7 +40,7 @@ public class Student extends Human {
 
 	// Hai phương thức cùng một biến chưa tìm được cách nạp chồng toán tử 
 	public void searchByCode(String code) {
-		Subject a = subjectMap.get(code);
+		iCreditSubject a = subjectMap.get(code);
 		if(a == null) {
 			System.out.println("Khong có môn học !");
 		}else {
@@ -48,7 +49,7 @@ public class Student extends Human {
 	}
 
 	public void searchByName(String name) {
-		Subject a = subjectMap.get(name);
+		iCreditSubject a = subjectMap.get(name);
 		if(a == null) {
 			System.out.println("Khong có môn học !");
 		}else {
@@ -61,9 +62,9 @@ public class Student extends Human {
 		float ts = 0;
 		int ms = 0;
 
-		for (Subject sub : subjectMap.values()) {
-			ts += sub.getCredit() * sub.calConversionMark();
-			ms += sub.getCredit();
+		for (iCreditSubject sub : subjectMap.values()) {
+			ts += ((Subject) sub).getCredit() *  ((Subject) sub).calConversionMark();
+			ms += ((Subject) sub).getCredit();
 		}
 
 		return ts / ms;
@@ -111,7 +112,7 @@ public class Student extends Human {
 		      .append(" ,class_= ").append(class_)
 		      .append("]\nDanh sách môn học:\n");
 		    
-		    for (HashMap.Entry<String, Subject> entry : subjectMap.entrySet()) {
+		    for (HashMap.Entry<String, iCreditSubject> entry : subjectMap.entrySet()) {
 		        sb.append("- ").append(entry.getKey())
 		          .append(": ").append(entry.getValue()).append("\n");
 		    }
