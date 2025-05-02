@@ -1,7 +1,6 @@
 import java.util.HashMap;
-import java.util.List;
+
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -63,8 +62,8 @@ public class Student extends Human {
 		int ms = 0;
 
 		for (iCreditSubject sub : subjectMap.values()) {
-			ts += ((Subject) sub).getCredit() *  ((Subject) sub).calConversionMark();
-			ms += ((Subject) sub).getCredit();
+			ts +=sub.getCredit() *  sub.calConversionMark();
+			ms += sub.getCredit();
 		}
 
 		return ts / ms;
@@ -99,7 +98,7 @@ public class Student extends Human {
 
 	@Override
 	public void enterInfo(Scanner sc) {
-
+		
 	}
 
 	@Override
