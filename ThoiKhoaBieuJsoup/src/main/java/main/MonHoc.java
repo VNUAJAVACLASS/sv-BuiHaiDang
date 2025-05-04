@@ -20,7 +20,7 @@ public class MonHoc {
 		this.nhomTo = nhomTo;
 		this.soTinChi = soTinChi;
 		this.lop = lop;
-		this.dsLichHoc = new ArrayList<>(); // khoi tao danh sach
+		this.dsLichHoc = new ArrayList<>(); 
 	}
 	public void addLichHoc(LichHoc lichHoc) {
         this.dsLichHoc.add(lichHoc);
@@ -49,14 +49,13 @@ public class MonHoc {
 		return dsLichHoc;
 	}
 	
-	// Phương thức toString mặc định
     @Override
     public String toString() {
-        return toString(dsLichHoc); // Gọi toString với danh sách lịch học mặc định
+        return toString(dsLichHoc);
     }
 
     // Phương thức toString với danh sách lịch học được truyền vào
-    public String toString(List<LichHoc> filteredLichHoc) {
+    public String toString(List<LichHoc> locLichHoc) {
         StringBuilder sb = new StringBuilder();
         sb.append("Mã MH: ").append(maMH).append("\n");
         sb.append("Tên môn học: ").append(tenMH).append("\n");
@@ -64,10 +63,10 @@ public class MonHoc {
         sb.append("Số tín chỉ: ").append(soTinChi).append("\n");
         sb.append("Lớp: ").append(lop).append("\n");
         sb.append("Lịch học:\n");
-        if (filteredLichHoc.isEmpty()) {
+        if (locLichHoc.isEmpty()) {
             sb.append("Không có lịch học.\n");
         } else {
-            for (LichHoc lichHoc : filteredLichHoc) {
+            for (LichHoc lichHoc : locLichHoc) {
                 sb.append(lichHoc.toString()).append("\n");
             }
         }

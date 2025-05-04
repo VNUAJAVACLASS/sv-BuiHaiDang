@@ -71,7 +71,7 @@ public class TKBManager {
 			for (LichHoc lichHoc : monHoc.getDSLichHoc()) {
 				if (lichHoc.getWeeks().contains(week)) {
 					int day = lichHoc.getDayOfWeek() - 1; // Chuyển đổi thứ thành chỉ số 0-6
-					tuanHoc.addLichHoc(day, monHoc, lichHoc); // Thêm cả MonHoc và LichHoc
+					tuanHoc.addLichHoc(day, monHoc, lichHoc);
 				}
 			}
 		}
@@ -79,14 +79,13 @@ public class TKBManager {
 	}
 
 	public void getTKBTheoTuanThu(int week, int day) {
-		// Kiểm tra tuần nhập vào có hợp lệ không (chỉ hỗ trợ tuần 1-20)
+		// Kiểm tra tuần nhập vào có hợp lệ không (chỉ hỗ trợ tuần 1-21)
 		if (week < 1 || week > 22) {
-			System.out.println("Tuần " + week + " không hợp lệ. Vui lòng nhập tuần từ 1 đến 22.");
+			System.out.println("Tuần " + week + " không hợp lệ. Vui lòng nhập tuần từ 1 đến 21.");
 			return;
 		}
 
-		// Chuẩn hóa giá trị ngày (người dùng nhập 2-7, CN=8, nhưng trong hệ thống: 1-6,
-		// CN=7)
+		// Chuẩn hóa giá trị ngày (người dùng nhập 2-7, CN=8, nhưng trong hệ thống: 1-6, CN=7)
 		int adjustedDay = (day == 8) ? 7 : day - 1;
 
 		System.out.println("\nThời khóa biểu tuần " + week + ", thứ " + (day == 8 ? "Chủ nhật" : day));
@@ -178,7 +177,6 @@ public class TKBManager {
 	}
 
 	public void xuatTKBTuan(TuanHoc tuan) {
-		// In tiêu đề cho tuần
 		System.out.println("\nThời khóa biểu tuần " + tuan.soTuan + ":");
 
 		// Duyệt qua từng ngày trong tuần (0: Thứ 2, 1: Thứ 3, ..., 6: Chủ nhật)
@@ -194,8 +192,8 @@ public class TKBManager {
 			} else {
 				// Duyệt qua từng lịch học trong ngày
 				for (Map.Entry<MonHoc, LichHoc> entry : lichHocList) {
-					MonHoc monHoc = entry.getKey(); // Lấy thông tin môn học
-					LichHoc lichHoc = entry.getValue(); // Lấy thông tin lịch học
+					MonHoc monHoc = entry.getKey();
+					LichHoc lichHoc = entry.getValue(); 
 
 					// In thông tin môn học
 					System.out.println("  - Môn học:");

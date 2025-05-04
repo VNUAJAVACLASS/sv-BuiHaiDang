@@ -9,7 +9,7 @@ import java.util.Map;
 public class TuanHoc {
 
 	int soTuan;
-    Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> days; // Lưu cặp <MonHoc, LichHoc>
+    Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> days;
 
     public TuanHoc(int soTuan) {
         this.soTuan = soTuan;
