@@ -15,6 +15,7 @@ public class Test {
 //	4. Xem thời khóa biểu theo ngày (nhập ngày/tháng/năm)
 
 	public static void main(String[] args) {
+		
 		Scanner scanner = new Scanner(System.in);
 		String html = "";
 		String filePath = "D:\\Code\\Java_Uck\\Hello\\src\\main\\java\\main\\BuiHaiDang.html";
@@ -23,7 +24,8 @@ public class Test {
 			html = new String(Files.readAllBytes(Paths.get(filePath)));
 			System.out.println("Đã đọc file thành công!");
 
-			LocalDate ngayBDHK = LocalDate.of(2025, 1, 16);
+			
+			LocalDate ngayBDHK = LocalDate.of(2025, 1, 13);
 			TKBManager tkbManager = new TKBManager(html, ngayBDHK);
 
 			// Menu chính
@@ -37,10 +39,10 @@ public class Test {
 				System.out.println("0. Thoát");
 				System.out.print("Chọn chức năng: ");
 
-				int choice = scanner.nextInt();
-				scanner.nextLine(); // Consume newline
+				int lc = scanner.nextInt();
+				scanner.nextLine(); 
 
-				switch (choice) {
+				switch (lc) {
 				case 0:
 					System.out.println("Tạm biệt!");
 					return;
@@ -57,7 +59,7 @@ public class Test {
 					// 2. Xem thời khóa biểu cả tuần
 					System.out.print("Nhập tuần (1-22): ");
 					int week = scanner.nextInt();
-					scanner.nextLine(); // Consume newline
+					scanner.nextLine(); 
 
 					TuanHoc tuan = tkbManager.getTKBCaTuan(week);
 					tkbManager.xuatTKBTuan(tuan);

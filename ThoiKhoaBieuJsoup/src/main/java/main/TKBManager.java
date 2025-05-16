@@ -127,7 +127,6 @@ public class TKBManager {
 
 	public List<MonHoc> getTKBTheoNgay(LocalDate date) {
 		List<MonHoc> result = new ArrayList<>();
-		LocalDate ngayBDHK = LocalDate.of(2025, 1, 16); // Ngày bắt đầu học kỳ
 
 		// Tính số tuần từ ngày bắt đầu học kỳ đến ngày nhập
 		long daysDiff = ChronoUnit.DAYS.between(ngayBDHK, date);
