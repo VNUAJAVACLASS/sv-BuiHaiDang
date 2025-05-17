@@ -7,14 +7,13 @@ import java.util.List;
 import java.util.Map;
 
 public class TuanHoc {
-
-	int soTuan;
-    Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> days;
-
+	private int soTuan;
+    private Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> days;
+    private Map<Integer, Ngay> dsNgay = new HashMap<Integer, Ngay>();
+    
     public TuanHoc(int soTuan) {
-        this.soTuan = soTuan;
+        this.setSoTuan(soTuan);
         this.days = new HashMap<>();
-        // Khởi tạo danh sách cho mỗi ngày 0: thứ 2, 1: thứ 3
         for (int i = 0; i < 7; i++) {
             this.days.put(i, new ArrayList<>());
         }
@@ -25,8 +24,17 @@ public class TuanHoc {
         this.days.get(day).add(Map.entry(monHoc, lichHoc));
     }
 
-    // Getter cho days
+    
+    
     public Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> getDays() {
         return days;
     }
+
+	public int getSoTuan() {
+		return soTuan;
+	}
+
+	public void setSoTuan(int soTuan) {
+		this.soTuan = soTuan;
+	}
 }

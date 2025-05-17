@@ -22,9 +22,11 @@ public class MonHoc {
 		this.lop = lop;
 		this.dsLichHoc = new ArrayList<>(); 
 	}
+	
 	public void addLichHoc(LichHoc lichHoc) {
         this.dsLichHoc.add(lichHoc);
     }
+	
 	public String getMaMH() {
 		return maMH;
 	}

@@ -17,11 +17,11 @@ public class LichHoc {
 		super();
 	}
 
-	public LichHoc(String thu, String tietBatDau, String soTiet2, String phongHoc, String giangVien, String thoiGianHoc) {
+	public LichHoc(String thu, String tietBatDau, String soTiet, String phongHoc, String giangVien, String thoiGianHoc) {
 		super();
 		this.thu = thu;
 		this.tietBD = tietBatDau;
-		this.soTiet = soTiet2;
+		this.soTiet = soTiet;
 		this.phongHoc = phongHoc;
 		this.giangVien = giangVien;
 		this.thoiGianHoc = thoiGianHoc;

@@ -29,7 +29,8 @@ public class read_web {
 
     public static WebData fetchData() throws Exception {
         try (Playwright playwright = Playwright.create()) {
-            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+            // Chạy trình duyệt ở chế độ headless
+            Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
             Page page = browser.newPage();
 
             // Mở trang web
@@ -55,16 +56,16 @@ public class read_web {
             page.keyboard().press("Enter");
 
             // Vào thời khóa biểu tuần
-            page.locator("//a[@id='WEB_TKB_1TUAN']").click();
             page.waitForTimeout(5000);
+            page.locator("//a[@id='WEB_TKB_1TUAN']").click();
 
-            // Chọn tuần học
+            // Chọn combobox tuần học 
             page.locator(
                     "#fullScreen > div.card-body.p-0 > div.row.text-nowrap.px-1.pb-1 > div.d-inline-block.col-lg-7.col-md-12.col-sm-12.mb-1 > ng-select > div > div > div.ng-input")
                     .click();
             page.waitForTimeout(2000);
 
-            // Cuộn lên trên
+            // Cuộn lên trên đầu 
             page.evaluate("() => document.querySelector('.ng-dropdown-panel-items.scroll-host').scrollTo(0, 0)");
             page.waitForTimeout(1000); // Chờ cuộn hoàn tất
 
@@ -72,8 +73,9 @@ public class read_web {
             String weekText = page.locator(
                     "//div[@class='ng-dropdown-panel-items scroll-host']//div[contains(@class, 'ng-option')][1]")
                     .textContent().trim();
-            System.out.println("Thông tin tuần: " + weekText);
-
+            
+            System.out.println(" " + weekText);
+            
             // Trích xuất ngày bắt đầu dưới dạng chuỗi
             String dateString = weekText.split("\\[từ ngày")[1].split("đến ngày")[0].trim();
             System.out.println("Ngày bắt đầu (chuỗi): " + dateString);
@@ -81,7 +83,6 @@ public class read_web {
             // Chuyển đổi chuỗi ngày thành LocalDate
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             startDate = LocalDate.parse(dateString, formatter);
-            System.out.println("Ngày bắt đầu (LocalDate): " + startDate);
 
             // Chọn thời khóa biểu học kỳ
             page.locator("//a[@id='WEB_TKB_HK']").click();
@@ -95,10 +96,9 @@ public class read_web {
             // Chọn học kỳ 2
             String semesterOptionSelector = "//div[contains(@class, 'ng-option') and contains(text(), 'Học kỳ 2 - Năm học 2024 - 2025')]";
             page.locator(semesterOptionSelector).click();
-            System.out.println("Đã chọn học kỳ 2 - Năm học 2024 - 2025");
 
             // Tăng thời gian chờ để bảng cập nhật
-            page.waitForTimeout(7000); // Tăng lên 7000ms để đảm bảo dữ liệu tải
+            page.waitForTimeout(7000); // Đảm bảo dữ liệu tải
 
             // Chọn table học kỳ và lấy dữ liệu
             String tableSelector = "//*[@id=\"printArea\"]/div[2]/table";

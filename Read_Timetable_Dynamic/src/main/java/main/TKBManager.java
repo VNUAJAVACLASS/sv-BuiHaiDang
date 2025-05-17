@@ -2,6 +2,7 @@ package main;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ import org.jsoup.select.Elements;
 
 public class TKBManager {
 	private List<MonHoc> monHocList;
-	private LocalDate ngayBDHK; // Ngày bắt đầu học kì
+	private LocalDate ngayBDHK;
 
 	public TKBManager(String html, LocalDate ngayBDHK) throws IOException {
 		this.monHocList = new ArrayList<MonHoc>();
@@ -56,7 +57,6 @@ public class TKBManager {
 			}
 		}
 	}
-	
 
 	// 1. Xem thời khóa biểu ngày hiện tại
 	public List<MonHoc> getTKBNgayHienTai() {
@@ -84,7 +84,8 @@ public class TKBManager {
 			return;
 		}
 
-		// Chuẩn hóa giá trị ngày (người dùng nhập 2-7, CN=8, nhưng trong hệ thống: 1-6, CN=7)
+		// Chuẩn hóa giá trị ngày (người dùng nhập 2-7, CN=8, nhưng trong hệ thống: 1-6,
+		// CN=7)
 		int adjustedDay = (day == 8) ? 7 : day - 1;
 
 		System.out.println("\nThời khóa biểu tuần " + week + ", thứ " + (day == 8 ? "Chủ nhật" : day));
@@ -175,9 +176,8 @@ public class TKBManager {
 	}
 
 	public void xuatTKBTuan(TuanHoc tuan) {
-		System.out.println("\nThời khóa biểu tuần " + tuan.soTuan + ":");
+		System.out.println("\nThời khóa biểu tuần " + tuan.getSoTuan() + ":");
 
-		// Duyệt qua từng ngày trong tuần (0: Thứ 2, 1: Thứ 3, ..., 6: Chủ nhật)
 		for (int day = 0; day < 7; day++) {
 			String dayName = (day == 6) ? "Chủ nhật" : "Thứ " + (day + 2);
 			System.out.println("\n" + dayName + ":");
@@ -191,7 +191,7 @@ public class TKBManager {
 				// Duyệt qua từng lịch học trong ngày
 				for (Map.Entry<MonHoc, LichHoc> entry : lichHocList) {
 					MonHoc monHoc = entry.getKey();
-					LichHoc lichHoc = entry.getValue(); 
+					LichHoc lichHoc = entry.getValue();
 
 					// In thông tin môn học
 					System.out.println("  - Môn học:");
@@ -205,6 +205,35 @@ public class TKBManager {
 					System.out.println("    Lịch học: " + lichHoc);
 				}
 			}
+		}
+	}
+
+	// Lấy thời khóa biểu ngày hiện tại
+	public void showTodaySchedule() {
+		xuatTKBNgay(getTKBNgayHienTai());
+	}
+
+	// Lấy thời khóa biểu theo ngày và tuần
+	public void showWeekDaySchedule(int week, int day) {
+		getTKBTheoTuanThu(week, day);
+	}
+
+	public void showWeekSchedule(int week) {
+		if (week >= 1 && week <= 22) {
+			System.out.println("Tuần không hợp lệ (1-22).");
+			return;
+		}
+		xuatTKBTuan(getTKBCaTuan(week));
+	}
+
+	// lấy thời khóa biểu theo ngày
+	public void showDateSchedule(String dateStr) {
+		try {
+			LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			System.out.println("\nThời khóa biểu ngày " + dateStr);
+			xuatTKBNgay(getTKBTheoNgay(date));
+		} catch (Exception e) {
+			System.out.println("Ngày không hợp lệ (dd/MM/yyyy).");
 		}
 	}
 
