@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>com.microsoft.playwright</groupId>
 			<artifactId>playwright</artifactId>
-			<version>1.25.0</version>
+			<version>1.46.0</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
@@ -41,7 +41,11 @@
 			<version>6.9.10</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.jline</groupId>
+		    <artifactId>jline</artifactId>
+		    <version>3.25.0</version>
+		</dependency>
    </dependencies>
    
    

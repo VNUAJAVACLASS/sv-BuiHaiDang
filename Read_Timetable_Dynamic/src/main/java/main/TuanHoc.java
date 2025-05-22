@@ -9,7 +9,6 @@ import java.util.Map;
 public class TuanHoc {
 	private int soTuan;
     private Map<Integer, List<Map.Entry<MonHoc, LichHoc>>> days;
-    private Map<Integer, Ngay> dsNgay = new HashMap<Integer, Ngay>();
     
     public TuanHoc(int soTuan) {
         this.setSoTuan(soTuan);

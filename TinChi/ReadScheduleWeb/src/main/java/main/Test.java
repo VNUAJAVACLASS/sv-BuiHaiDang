@@ -43,17 +43,17 @@ public class Test {
 
 				case 2:
 //					 Xem thời khóa biểu theo tuần, thứ
-					tkbManager.showWeekSchedule();
+					tkbManager.showWeekSchedule(scanner.nextInt());
 					break;
 
 				case 3:
 //					Xem thời khóa biểu theo ngày
-					tkbManager.showWeekDaySchedule();
+					tkbManager.showWeekDaySchedule(scanner.nextInt(), scanner.nextInt());
 					break;
 
 				case 4:
 //					Xem thời khóa biểu theo ngày
-					tkbManager.showDateSchedule();
+					tkbManager.showDateSchedule(scanner.nextLine());
 					break;
 
 				default:

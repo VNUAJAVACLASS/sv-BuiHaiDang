@@ -1,7 +1,6 @@
 package main;
 
 import java.time.LocalDate;
-
 import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -38,23 +37,21 @@ public class read_web {
             page.navigate("https://daotao.vnua.edu.vn/#/home");
 
             // Nhập thông tin đăng nhập bằng JOptionPane
-//            String[] credentials = readCredentialsWithSwing();
-//            String msv = credentials[0];
-//            String mk = credentials[1];
-//
-//            // Kiểm tra nếu người dùng hủy nhập liệu
-//            if (msv == null || mk == null) {
-//                System.out.println("Đã hủy nhập thông tin đăng nhập.");
-//                browser.close();
-//                return new WebData(null, null);
-//            }
-//
-//            // Điền thông tin đăng nhập
-//            page.locator("//input[@name='username']").fill(msv);
-//            page.locator("//input[@name='password']").fill(mk);
+            String[] credentials = readCredentialsWithSwing();
+            String msv = credentials[0];
+            String mk = credentials[1];
 
-          page.locator("//input[@name='username']").fill("671263");
-          page.locator("//input[@name='password']").fill("572004");
+            // Kiểm tra nếu người dùng hủy nhập liệu
+            if (msv == null || mk == null) {
+                System.out.println("Đã hủy nhập thông tin đăng nhập.");
+                browser.close();
+                return new WebData(null, null);
+            }
+
+            // Điền thông tin đăng nhập
+            page.locator("//input[@name='username']").fill(msv);
+            page.locator("//input[@name='password']").fill(mk);
+
             // Nhấn Enter để đăng nhập
             page.keyboard().press("Enter");
 
@@ -77,6 +74,8 @@ public class read_web {
                     "//div[@class='ng-dropdown-panel-items scroll-host']//div[contains(@class, 'ng-option')][1]")
                     .textContent().trim();
             
+            System.out.println(" " + weekText);
+            
             // Trích xuất ngày bắt đầu dưới dạng chuỗi
             String dateString = weekText.split("\\[từ ngày")[1].split("đến ngày")[0].trim();
             System.out.println("Ngày bắt đầu (chuỗi): " + dateString);
@@ -90,12 +89,10 @@ public class read_web {
             page.waitForTimeout(5000);
 
             // Mở dropdown học kỳ
-            String semesterDropdownSelector = "body > app-root > div > div > div > div.contentshow.ng-star-inserted > div > div > div.px-md-0.frame_left > app-tkb-hocky > div > div.card-body.p-2 > div:nth-child(1) > div > ng-select > div";
+            String semesterDropdownSelector = "body > app-root:nth-child(1) > div > div > div > div.contentshow.ng-star-inserted > div > div > div.px-md-0.frame_left > app-tkb-hocky > div > div.card-body.p-2 > div:nth-child(1) > div > ng-select > div";
             page.locator(semesterDropdownSelector).click();
             page.waitForTimeout(2000);
-            
-         
-            
+
             // Chọn học kỳ 2
             String semesterOptionSelector = "//div[contains(@class, 'ng-option') and contains(text(), 'Học kỳ 2 - Năm học 2024 - 2025')]";
             page.locator(semesterOptionSelector).click();

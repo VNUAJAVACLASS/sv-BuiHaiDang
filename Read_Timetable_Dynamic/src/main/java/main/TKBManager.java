@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,6 +15,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class TKBManager {
+	private static final Scanner scanner = new Scanner(System.in);
 	private List<MonHoc> monHocList;
 	private LocalDate ngayBDHK;
 
@@ -108,13 +110,7 @@ public class TKBManager {
 			// Nếu môn học có lịch học phù hợp, in thông tin môn học và lịch học
 			if (xemLichHoc) {
 				coLich = true;
-				System.out.println("Mã MH: " + monHoc.getMaMH());
-				System.out.println("Tên môn học: " + monHoc.getTenMH());
-				System.out.println("Nhóm tổ: " + monHoc.getNhomTo());
-				System.out.println("Số tín chỉ: " + monHoc.getSoTinChi());
-				System.out.println("Lớp: " + monHoc.getLop());
-				System.out.println("Lịch học:");
-				System.out.print(lichHocOutput.toString());
+				System.out.println(monHoc.toString() + "Lịch học:\n" + lichHocOutput);
 				System.out.println();
 			}
 		}
@@ -162,11 +158,7 @@ public class TKBManager {
 		}
 
 		for (MonHoc monHoc : tkb) {
-			System.out.println("Mã MH: " + monHoc.getMaMH());
-			System.out.println("Tên môn học: " + monHoc.getTenMH());
-			System.out.println("Nhóm tổ: " + monHoc.getNhomTo());
-			System.out.println("Số tín chỉ: " + monHoc.getSoTinChi());
-			System.out.println("Lớp: " + monHoc.getLop());
+			System.out.println("Mã MH: " + monHoc.toString());
 			System.out.println("Lịch học:");
 			for (LichHoc lichHoc : monHoc.getDSLichHoc()) {
 				System.out.println(lichHoc.toString());
@@ -174,7 +166,8 @@ public class TKBManager {
 			System.out.println();
 		}
 	}
-
+	
+	
 	public void xuatTKBTuan(TuanHoc tuan) {
 		System.out.println("\nThời khóa biểu tuần " + tuan.getSoTuan() + ":");
 
@@ -195,12 +188,7 @@ public class TKBManager {
 
 					// In thông tin môn học
 					System.out.println("  - Môn học:");
-					System.out.println("    Mã MH: " + monHoc.getMaMH());
-					System.out.println("    Tên môn: " + monHoc.getTenMH());
-					System.out.println("    Nhóm tổ: " + monHoc.getNhomTo());
-					System.out.println("    Số tín chỉ: " + monHoc.getSoTinChi());
-					System.out.println("    Lớp: " + monHoc.getLop());
-
+					System.out.println("    Mã MH: " + monHoc.toString());
 					// In thông tin lịch học
 					System.out.println("    Lịch học: " + lichHoc);
 				}
@@ -208,33 +196,79 @@ public class TKBManager {
 		}
 	}
 
-	// Lấy thời khóa biểu ngày hiện tại
-	public void showTodaySchedule() {
-		xuatTKBNgay(getTKBNgayHienTai());
-	}
+	 // Lấy thời khóa biểu ngày hiện tại
+    public void showTodaySchedule() {
+        LocalDate today = LocalDate.now();
+        System.out.println("Đang lấy thời khóa biểu cho ngày hiện tại: " + today.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        xuatTKBNgay(getTKBNgayHienTai());
+    }
 
-	// Lấy thời khóa biểu theo ngày và tuần
-	public void showWeekDaySchedule(int week, int day) {
-		getTKBTheoTuanThu(week, day);
-	}
+    // Lấy thời khóa biểu cả tuần
+    public void showWeekSchedule() {
+        System.out.print("Nhập số tuần (1-22): ");
+        int week;
+        try {
+            week = scanner.nextInt();
+            scanner.nextLine(); // Xóa bộ đệm
+        } catch (Exception e) {
+            scanner.nextLine(); // Xóa đầu vào không hợp lệ
+            System.out.println("Đầu vào không hợp lệ. Vui lòng nhập số từ 1 đến 22.");
+            return;
+        }
 
-	public void showWeekSchedule(int week) {
-		if (week >= 1 && week <= 22) {
-			System.out.println("Tuần không hợp lệ (1-22).");
-			return;
-		}
-		xuatTKBTuan(getTKBCaTuan(week));
-	}
+        System.out.println("Đang lấy thời khóa biểu cho tuần: " + week);
+        if (week < 1 || week > 22) {
+            System.out.println("Tuần không hợp lệ (phải từ 1 đến 22).");
+            return;
+        }
+        xuatTKBTuan(getTKBCaTuan(week));
+    }
 
-	// lấy thời khóa biểu theo ngày
-	public void showDateSchedule(String dateStr) {
-		try {
-			LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-			System.out.println("\nThời khóa biểu ngày " + dateStr);
-			xuatTKBNgay(getTKBTheoNgay(date));
-		} catch (Exception e) {
-			System.out.println("Ngày không hợp lệ (dd/MM/yyyy).");
-		}
-	}
+    // Lấy thời khóa biểu theo tuần và thứ
+    public void showWeekDaySchedule() {
+        System.out.print("Nhập số tuần (1-22): ");
+        int week;
+        try {
+            week = scanner.nextInt();
+        } catch (Exception e) {
+            scanner.nextLine(); // Xóa đầu vào không hợp lệ
+            System.out.println("Đầu vào tuần không hợp lệ. Vui lòng nhập số từ 1 đến 22.");
+            return;
+        }
+
+        System.out.print("Nhập thứ (2-7, 8 cho Chủ nhật): ");
+        int day;
+        try {
+            day = scanner.nextInt();
+            scanner.nextLine(); // Xóa bộ đệm
+        } catch (Exception e) {
+            scanner.nextLine(); // Xóa đầu vào không hợp lệ
+            System.out.println("Đầu vào thứ không hợp lệ. Vui lòng nhập số từ 2 đến 7 hoặc 8.");
+            return;
+        }
+
+        System.out.println("Đang lấy thời khóa biểu cho tuần: " + week + ", thứ: " + (day == 8 ? "Chủ nhật" : day));
+        getTKBTheoTuanThu(week, day);
+    }
+
+    // Lấy thời khóa biểu theo ngày
+    public void showDateSchedule() {
+        System.out.print("Nhập ngày (dd/MM/yyyy): ");
+        String dateStr = scanner.nextLine();
+        System.out.println("Đang lấy thời khóa biểu cho ngày: " + dateStr);
+        try {
+            LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            System.out.println("Thời khóa biểu ngày " + dateStr);
+            xuatTKBNgay(getTKBTheoNgay(date));
+        } catch (Exception e) {
+            System.out.println("Ngày không hợp lệ (định dạng phải là dd/MM/yyyy).");
+        }
+    }
+
+    // Đóng Scanner
+    public void closeScanner() {
+        scanner.close();
+    }
+
 
 }

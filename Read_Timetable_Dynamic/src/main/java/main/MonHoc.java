@@ -65,13 +65,6 @@ public class MonHoc {
         sb.append("Số tín chỉ: ").append(soTinChi).append("\n");
         sb.append("Lớp: ").append(lop).append("\n");
         sb.append("Lịch học:\n");
-        if (locLichHoc.isEmpty()) {
-            sb.append("Không có lịch học.\n");
-        } else {
-            for (LichHoc lichHoc : locLichHoc) {
-                sb.append(lichHoc.toString()).append("\n");
-            }
-        }
         return sb.toString();
     }
 
