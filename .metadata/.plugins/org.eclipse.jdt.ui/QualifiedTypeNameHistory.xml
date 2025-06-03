@@ -37,4 +37,7 @@
     <fullyQualifiedTypeName name="hibernate.Student"/>
     <fullyQualifiedTypeName name="hibernate.StudentDAO"/>
     <fullyQualifiedTypeName name="hibernate.CreditHiberateUtil"/>
+    <fullyQualifiedTypeName name="main.ReadSchedule"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="main.TKBManager"/>
 </qualifiedTypeNameHistroy>

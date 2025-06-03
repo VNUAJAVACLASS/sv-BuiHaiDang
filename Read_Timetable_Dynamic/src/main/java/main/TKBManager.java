@@ -14,7 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class TKBManager {
+public class TKBManager implements ReadSchedule {
 	private static final Scanner scanner = new Scanner(System.in);
 	private List<MonHoc> monHocList;
 	private LocalDate ngayBDHK;
@@ -22,12 +22,51 @@ public class TKBManager {
 	public TKBManager(String html, LocalDate ngayBDHK) throws IOException {
 		this.monHocList = new ArrayList<MonHoc>();
 		this.ngayBDHK = ngayBDHK;
-		parseHTML(html);
+		parseSchedule(html);
 	}
 
-	// Phân tích HTML để lấy dữ liệu
-	private void parseHTML(String htmlContent) throws IOException {
-		Document doc = Jsoup.parse(htmlContent);
+		
+//	// Phân tích HTML để lấy dữ liệu
+//	private void parseHTML(String htmlContent) throws IOException {
+//		Document doc = Jsoup.parse(htmlContent);
+//		Elements rows = doc.select("tbody tr");
+//		MonHoc monHocHienTai = null;
+//
+//		for (Element row : rows) {
+//			Elements cells = row.select("td"); // Lấy tất cả các hàng trong body
+//
+//			// Kiểm tra hàng có thông tin môn học (có thuộc tính rowspan)
+//			if (cells.get(0).hasAttr("rowspan")) {
+//				String maMH = cells.get(0).text().trim();
+//				String tenMonHoc = cells.get(1).text().trim();
+//				String nhomTo = cells.get(2).text().trim();
+//				String soTinChi = cells.get(3).text().trim();
+//				String lop = cells.get(6).text().trim();
+//
+//				monHocHienTai = new MonHoc(maMH, tenMonHoc, nhomTo, soTinChi, lop);
+//				monHocList.add(monHocHienTai);
+//			}
+//
+//			String thu = cells.get(cells.size() - 10).text().trim();
+//			String tietBatDau = cells.get(cells.size() - 9).text().trim();
+//			String soTiet = cells.get(cells.size() - 8).text().trim();
+//			String phong = cells.get(cells.size() - 7).text().trim();
+//			String giangVien = cells.get(cells.size() - 6).text().trim();
+//			String thoiGianHoc = cells.get(cells.size() - 5).text().trim();
+//
+//			LichHoc lichHoc = new LichHoc(thu, tietBatDau, soTiet, phong, giangVien, thoiGianHoc);
+//			if (monHocHienTai != null) {
+//				monHocHienTai.addLichHoc(lichHoc);
+//			}
+//		}
+//	}
+	
+	public TKBManager() {}
+
+
+	@Override
+	public void parseSchedule(String source) throws IOException {
+		Document doc = Jsoup.parse(source);
 		Elements rows = doc.select("tbody tr");
 		MonHoc monHocHienTai = null;
 
@@ -59,6 +98,8 @@ public class TKBManager {
 			}
 		}
 	}
+
+
 
 	// 1. Xem thời khóa biểu ngày hiện tại
 	public List<MonHoc> getTKBNgayHienTai() {
@@ -269,6 +310,10 @@ public class TKBManager {
     public void closeScanner() {
         scanner.close();
     }
+
+
+
+	
 
 
 }
