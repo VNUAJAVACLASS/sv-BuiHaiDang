@@ -1,45 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<!-- Khai báo sử dụng thư viện thẻ tiện ích -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sach tin tuc</title>
+<title>Danh sách sách</title>
 </head>
 <body>
-	<h2>Danh sách tin tức</h2>
-	<!-- Link gọi đến servlet "news" với tham số action đi kèm -->
-	<a href="news?action=create">Tạo tin mới</a>
-	<br><br>
-	<table border="1" cellpadding="5">
-	<tr>
-	<th>ID</th>
-	<th>Tiêu đề</th>
-	<th>Hành động</th>
-	</tr>
-	<!-- Duyệt qua danh sách tin tức -->
-	<!-- newsList là tên thuộc tính đang có trong request scope được ghi vào bởi servlet -->
-	<!-- var="news" là biến của vòng lặp, news đại diện cho đối tượng News trong danh sách
-	được duyệt -->
-	<c:forEach var="news" items="${newsList}">
-	<tr>
-	<td>${news.id}</td> <!-- id là tên thuộc tính của đối tượng News trong file
-	News.java -->
-	<td>
-	<!-- Khi click sẽ gửi yêu cầu về servlet trả lại trang detail.jsp -->
-	<a href="news?action=detail&id=${news.id}">${news.title}</a>
-	</td>
-	<td>
-	<!-- Khi click sẽ gửi yêu cầu về servlet trả lại trang form.jsp -->
-	<a href="news?action=edit&id=${news.id}">Sửa</a> |
-	<a href="news?action=delete&id=${news.id}" onclick="return confirm('Xoá tin
-	này?');">Xoá</a>
-	</td>
-	</tr>
-	</c:forEach>
-	</table>
+ 	<p>Xin chào, ${sessionScope.username} | <a href="logout.jsp">Logout</a></p>
+ 	
+    <h2>Trang chủ Admin - Danh sách tin tức</h2>
+    <!-- Link gọi đến servlet "books" với tham số action=create -->
+    <a href="adminHome?action=create">Thêm sách mới</a>
+    <br><br>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>ID</th>
+            <th>Tiêu đề</th>
+            <th>Tác giả</th>
+            <th>Giá</th>
+            <th>Hình ảnh</th>
+            <th>Hành động</th>
+        </tr>
+        <!-- Duyệt qua danh sách book -->
+        <c:forEach var="book" items="${bookList}">
+            <tr>
+                <td>${book.bookId}</td>
+                <td>
+                    <a href="adminHome?action=detail&id=${book.bookId}">
+                        ${book.title}
+                    </a>
+                </td>
+                <td>${book.author}</td>
+                <td>${book.price}</td>
+                <td>
+                    <c:if test="${not empty book.imagePath}">
+                        <img src="${book.imagePath}" alt="${book.title}" style="max-width:60px;">
+                    </c:if>
+                </td>
+                <td>
+                    <a href="adminHome?action=edit&id=${book.bookId}">Sửa</a> |
+                    <a href="adminHome?action=delete&id=${book.bookId}" onclick="return confirm('Xoá sách này?');">Xoá</a>
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
 </body>
 </html>
