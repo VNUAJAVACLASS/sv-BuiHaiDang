@@ -1,0 +1,63 @@
+.book-detail-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 25px 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.book-detail-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.book-detail-container p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.book-detail-container p b {
+    width: 100px;
+    display: inline-block;
+    color: #222;
+}
+
+.book-detail-container img {
+    display: block;
+    margin: 15px auto;
+    max-width: 200px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.book-detail-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 18px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.book-detail-container a:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 480px) {
+    .book-detail-container {
+        padding: 20px;
+    }
+
+    .book-detail-container h2 {
+        font-size: 20px;
+    }
+}

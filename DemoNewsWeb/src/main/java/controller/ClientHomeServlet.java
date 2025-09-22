@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import model.Book;
 import service.BookService;
 
-/**
- * Servlet implementation class ClientHomeServlet
- */
 @WebServlet("/clientHome")
+
 public class ClientHomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 private BookService bookService;
@@ -52,8 +50,6 @@ public class ClientHomeServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	
 	
 	}
 

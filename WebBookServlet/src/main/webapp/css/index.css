@@ -1,0 +1,338 @@
+
+
+/* Header container */
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-flow: column;
+}
+
+/* Container */
+.header .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.login-header {
+    margin-bottom: 5px;
+    margin-right:10px;
+    text-align: right;
+}
+
+.login-header a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.login-header a:hover {
+    color: #007BFF;
+}
+
+.logo-header img{
+	margin-left: 0;
+	width: 150px;
+	margin-left: 20px;
+}
+
+.header .row {
+    display: flex;
+    align-items: center;
+}
+
+.header .col-3 img {
+    max-width: 100%;
+    height: auto;
+}
+
+.title-header {
+    font-weight: bold;
+    font-size: 25px;
+    color: #333;
+    text-align: left;
+    margin-left: 10px;
+}
+
+/* Navigation menu */
+.nav-header {
+    background-color: #333;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.nav-header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-header ul li {
+    margin: 0;
+}
+
+.nav-header .nav-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 14px;
+}
+
+.nav-header .nav-link:hover,
+.nav-header .nav-link.active {
+    background-color: #555;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.nav-header input.form-control {
+    width: 200px;
+    margin-left: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+}
+
+
+/* ===== BỐ CỤC CHÍNH ===== */
+.container_body {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #ededed;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 17%;
+  background-color: #ededed; 
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.container_body div ul {
+  width: 97%;
+  background: #d5d5d5; 
+}
+
+.sidebar_menu {
+  width: 100%; 
+  height: 80%;
+  padding: 10px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: auto;
+  width: 100%; 
+  background: #fff; 
+  border: none;
+}
+
+.category-list li {
+  font-size: 13px;
+  padding: 6px;
+  display: flex; 
+  align-items: center; 
+}
+
+.category-list li .nav_icon_book {
+  width: 13px;
+  margin-right: 4px; 
+}
+
+.category-list li:hover {
+  background: #f9f9f9;
+}
+
+.sidebar_email{
+  padding: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.email-register {
+  width: 95%; 
+  padding: 14px;
+  background: #fff; 
+  text-align: center;
+}
+
+.email-register h4 {
+  margin-bottom: 10px;
+}
+
+.email-register input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.email-register button {
+  width: 100%;
+  padding: 5px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.email-register button:hover {
+  background: #218838;
+}
+
+/* Container chứa danh sách */
+.content{
+	width: 100%;
+}
+.book-list {
+    display: flex;
+    flex-wrap: wrap;      
+    gap: 20px;         
+}
+
+/* Card sách */
+.book-card {
+    flex: 0 0 auto;  
+	width: 220px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.book-card .card-body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-card .btn {
+    margin-top: auto; 
+    background: #007bff;
+    color: white;
+    text-align: center;
+    padding: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Hiển thị danh sách */
+#show-book-list{
+	margin-top:10px;
+	background: #ffffff;
+	padding: 10px;
+	text-align: center;
+}
+#show-book-list a{
+	font-weight: bold;
+	text-decoration: none;
+}
+
+
+ /* Page number */
+.container_pagination{
+  width: 100%;
+  height: 100px;
+  background: #ffffff;
+  padding: auto;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+  font-weight: bold;
+} 
+
+
+/* footer */
+/* footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #b3b3b3;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+ */
+ 
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #b3b3b3;
+  color: #000;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+
+
+@media (max-width: 768px) {
+    .header .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .title-header {
+        margin-left: 0;
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-header ul {
+        flex-direction: column;
+    }
+
+    .nav-header input.form-control {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-header">
+        <div class="logo">
+          <img src="asses/icon/open-book.png" alt="Bookstore Logo" />
+          <span>Website Cửa Hàng Sách với JSP/Servlet</span>
+        </div>
+        <div class="login">
+          <img src="asses/icon/login.png" alt="" />
+          <a href="btn-login">Đăng nhập</a>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="#"> Trang chủ</a>
+          </li>
+          <li><a href="#">Sách phổ biến</a></li>
+          <li><a href="#">Sách bán chạy</a></li>
+          <li><a href="#">Sách mới</a></li>
+          <li><a href="#">Giá thấp đến cao</a></li>
+          <li><a href="#">Giá cao đến thấp</a></li>
+        </ul>
+        <div class="search-box">
+          <input type="text" placeholder="Tìm sách..." />
+        </div>
+      </nav>
+    </header>
+
+    <div class="container_body">
+      <!-- Cột trái -->
+      <div class="sidebar">
+        <div class="sidebar_menu">
+          <ul class="category-list">
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách thiếu nhi</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách ngoại ngữ</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách kỹ năng sống</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách nuôi dạy con</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách có học tinh hoa</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách kinh tế - xã hội</li>
+            <li><img class="nav_icon_book" src="asses/icon/book_nav.png" alt="">Sách khoa học - công nghệ</li>
+          </ul>
+        </div>
+        
+        <div class="sidebar_email">
+          <div class="email-register">
+            <h4>Đăng ký nhận email</h4>
+            <input type="email" placeholder="Nhập email..." />
+            <button>Gửi</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Cột phải -->
+      <section class="content">
+        <div class="list_card" id="list_card">
+          <!-- Các item sách load ở đây -->
+        </div>
+
+        <div class="container_pagination">
+          
+          <div class="pagination">
+            <a href="#" class="prev">Previous</a>
+            <a href="#" class="active" data-page="1">1</a>
+            <a href="#" data-page="2">2</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div class="footer_container">
+        <span>Bản quyền thuộc nhóm tác giả cuốn sách "Giáo trình lập trình Java 2"</span>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>

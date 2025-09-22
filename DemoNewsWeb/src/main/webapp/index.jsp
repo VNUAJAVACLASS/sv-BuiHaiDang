@@ -25,7 +25,7 @@
             <tr>
                 <td>${book.bookId}</td>
                 <td>
-                    <a">
+                    <a>
                         ${book.title}
                     </a>
                 </td>

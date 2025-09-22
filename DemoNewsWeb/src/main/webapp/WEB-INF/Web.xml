@@ -18,5 +18,4 @@ id="WebApp_ID" version="4.0">
 <servlet-name>AdminHomeServlet</servlet-name>
 <url-pattern>/adminHome</url-pattern>
 </servlet-mapping>
-
 </web-app>
