@@ -22,9 +22,9 @@
 	<section name="NewClassCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="681"/>
 		<item key="DIALOG_Y_ORIGIN" value="89"/>
-		<item key="DIALOG_WIDTH" value="542"/>
-		<item key="DIALOG_HEIGHT" value="638"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="571"/>
+		<item key="DIALOG_HEIGHT" value="656"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 	<section name="OptionalMessageDialog.hide.">
 		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
@@ -34,6 +34,8 @@
 		<item key="create_unimplemented" value="true"/>
 	</section>
 	<section name="completion_proposal_size">
+		<item key="contextSelector.size.x" value="265"/>
+		<item key="contextSelector.size.y" value="177"/>
 	</section>
 	<section name="quick_assist_proposal_size">
 	</section>
@@ -49,9 +51,9 @@
 	<section name="DialogBounds_GenerateConstructorUsingFieldsSelectionDialog">
 		<item key="DIALOG_X_ORIGIN" value="710"/>
 		<item key="DIALOG_Y_ORIGIN" value="76"/>
-		<item key="DIALOG_WIDTH" value="517"/>
-		<item key="DIALOG_HEIGHT" value="678"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="518"/>
+		<item key="DIALOG_HEIGHT" value="700"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 	<section name="SourceActionDialog.methods">
 		<item key="VisibilityModifier" value="1"/>
@@ -75,9 +77,9 @@
 	<section name="DialogBounds_GetterSetterTreeSelectionDialog">
 		<item key="DIALOG_X_ORIGIN" value="705"/>
 		<item key="DIALOG_Y_ORIGIN" value="64"/>
-		<item key="DIALOG_WIDTH" value="526"/>
-		<item key="DIALOG_HEIGHT" value="696"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="530"/>
+		<item key="DIALOG_HEIGHT" value="718"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 	<section name="DialogBounds_GenerateToStringDialog">
 		<item key="DIALOG_X_ORIGIN" value="710"/>
@@ -103,9 +105,9 @@
 	<section name="DialogBounds_AddUnimplementedConstructorsDialog">
 		<item key="DIALOG_X_ORIGIN" value="630"/>
 		<item key="DIALOG_Y_ORIGIN" value="9"/>
-		<item key="DIALOG_WIDTH" value="678"/>
-		<item key="DIALOG_HEIGHT" value="806"/>
-		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+		<item key="DIALOG_WIDTH" value="518"/>
+		<item key="DIALOG_HEIGHT" value="649"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
 	</section>
 	<section name="NewInterfaceCreationWizard.dialogBounds">
 		<item key="DIALOG_X_ORIGIN" value="614"/>
@@ -131,5 +133,48 @@
 		<item key="expanded0" value="true"/>
 		<item key="expanded1" value="false"/>
 		<item key="expanded2" value="false"/>
+	</section>
+	<section name="org.eclipse.ltk.ui.refactoring.settings">
+		<item key="updateSimilarElements" value="false"/>
+		<item key="updateSimilarElementsMatchStrategy" value="1"/>
+		<item key="updateTextualMatches" value="false"/>
+		<item key="updateQualifiedNames" value="false"/>
+		<item key="patterns" value="*"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.text.QuickOutline">
+		<item key="GoIntoTopLevelTypeAction.isChecked" value="false"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_WIDTH" value="350"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT" value="320"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE" value="true"/>
+		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION" value="false"/>
+	</section>
+	<section name="NewPackageCreationWizard.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="513"/>
+		<item key="DIALOG_Y_ORIGIN" value="151"/>
+		<item key="DIALOG_WIDTH" value="525"/>
+		<item key="DIALOG_HEIGHT" value="433"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+	</section>
+	<section name="NewPackageWizardPage">
+		<item key="create_package_info_java" value="false"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.dialogs.OpenTypeSelectionDialog2">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History/&gt;"/>
+		<item key="WorkingSet" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="475"/>
+			<item key="DIALOG_Y_ORIGIN" value="106"/>
+			<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
+		</section>
+	</section>
+	<section name="NewEnumCreationWizard.dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="504"/>
+		<item key="DIALOG_Y_ORIGIN" value="92"/>
+		<item key="DIALOG_WIDTH" value="543"/>
+		<item key="DIALOG_HEIGHT" value="521"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|5|0|Segoe UI"/>
 	</section>
 </section>

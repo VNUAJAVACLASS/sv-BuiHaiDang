@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5;URL=clientHome">
+    <title>Website Cửa Hàng Sách</title>
+
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fdfdfd;
+        }
+
+        .loading-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: linear-gradient(135deg, #f0f4ff, #dbe9ff);
+            flex-direction: column;
+        }
+
+        .spinner {
+            border: 8px solid #e0e0e0;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 20px;
+            color: #333;
+            animation: fade 1.5s ease-in-out infinite;
+        }
+
+        @keyframes fade {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="spinner"></div>
+        <div class="loading-text">Đang tải trang, vui lòng chờ...</div>
+    </div>
+</body>
+</html>

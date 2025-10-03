@@ -8,7 +8,6 @@ body {
 .container_body {
   display: flex;
 }
-
 /* Sidebar */
 .sidebar {
   width: 250px;
@@ -58,9 +57,12 @@ body {
 .menu_list li {
   padding: 15px;
   cursor: pointer;
-  /* border-radius: 15px; */
-  /* border: solid 1px #474747; */
   margin-top: 4px;
+}
+
+.menu_list li a {
+	text-decoration: none;
+	color: #fff;
 }
 .menu_list li:hover, .menu_list li.active {
   background: #2563eb;

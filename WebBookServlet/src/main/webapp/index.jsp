@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Danh sách Sách</title>
+<title>Trang chủ</title>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -17,38 +18,13 @@
 </head>
 <body class="bg-light">
 
-	<!-- Header -->
-	<header class="header">
-		<div class="login-header">
-			<a href="login.jsp"><i class="bi bi-person-circle"></i> Đăng nhập</a>
-		</div>
-		<div class="row">
-			<div class="col-4 logo-header">
-				<img alt="logo" src="img/logo_home.png">
-			</div>
-			<div class="col-7 title-header">Website Cửa hàng bán sách với
-				JSP/Servlet</div>
-		</div>
+	<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	response.setDateHeader("Expires", 0);
+	%>
+	<jsp:include page="_header.jsp"></jsp:include>
 
-		<nav class="nav-header">
-			<ul class="navbar-nav ms-auto d-flex flex-row">
-				<li class="nav-item"><a class="nav-link active"
-					href="index.jsp"><i class="bi bi-house"></i> Trang chủ</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Sách
-						phổ biến</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Sách
-						bán chạy</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Sách
-						mới</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Giá
-						thấp đến cao</a></li>
-				<li class="nav-item"><a class="nav-link active" href="#">Giá
-						cao đến giá thấp</a></li>
-				<li class="nav-item"><input class=" form-control" type="text"
-					placeholder="Tìm kiếm sách..." aria-label="Search"></li>
-			</ul>
-		</nav>
-	</header>
 
 
 	<div class="container_body">
@@ -86,98 +62,47 @@
 		<!-- Cột phải -->
 		<section class="content">
 			<!-- Book list -->
-
 			<div class="book-list">
-
-
-				<!-- Book 1 -->
-				<div class="book-card">
-					<img src="img/CuLinhThanChuong.jpg" alt="Book 1">
-					<div class="card-body">
-						<h5>Lập Trình Java Cơ Bản</h5>
-						<p>Tác giả: Nguyễn Văn A</p>
-						<p class="price">120000₫</p>
-						<a href="#" class="btn">Xem chi tiết</a>
-					</div>
-				</div>
-
-				<!-- Book 2 -->
-				<div class="book-card">
-					<img src="img/MuaThan.jpg" alt="Book 2">
-					<div class="card-body">
-						<h5>Học Spring Boot Nâng Cao</h5>
-						<p>Tác giả: Trần Văn B</p>
-						<p class="price">150000₫</p>
-						<a href="#" class="btn">Xem chi tiết</a>
-					</div>
-				</div>
-
-				<!-- Book 3 -->
-				<div class="book-card">
-					<img src="img/NhuLai.jpg" alt="Book 3">
-					<div class="card-body">
-						<h5>Thuật Toán Và Cấu Trúc Dữ Liệu</h5>
-						<p>Tác giả: Lê Văn C</p>
-						<p class="price">180000₫</p>
-						<a href="#" class="btn">Xem chi tiết</a>
-					</div>
-				</div>
-
-				<!-- Book 4 -->
-				<div class="book-card">
-					<img src="img/XichLoi.jpg" alt="Book 4">
-					<div class="card-body">
-						<h5>C# Toàn Tập</h5>
-						<p>Tác giả: Phạm Văn D</p>
-						<p class="price">200000₫</p>
-						<a href="#" class="btn">Xem chi tiết</a>
-					</div>
-				</div>
-
-
-
-				<!-- BookList -->
 				<c:forEach var="book" items="${bookList}">
 					<div class="book-card">
 						<c:if test="${not empty book.imagePath}">
-							<img src="${book.imagePath}" alt="${book.title}">
+							<img src="img/MuaThan.jpg" alt="${book.title}">
 						</c:if>
 						<div class="card-body">
 							<h5>${book.title}</h5>
 							<p>Tác giả: ${book.author}</p>
 							<p class="price">${book.price}₫</p>
-							<a href="clientHome?action=detail&id=${book.bookId}" class="btn">Xem
-								chi tiết</a>
+							<a href="clientHome?action=detail&id=${book.bookId}" class="btn">
+							Xem chi tiết</a>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
 
-			<div id="show-book-list">
-				<a href="clientHome">Xem thêm danh sách sản phẩm</a>
-			</div>
-
+			<!-- Phan trang  -->
 			<div class="container_pagination">
 				<div class="pagination">
-					<a href="#" class="prev">Previous</a> <a href="#" class="active"
-						data-page="1">1</a> <a href="#" data-page="2">2</a>
+					<c:if test="${currentPage > 1}">
+						<a href="clientHome?action=list&page=${currentPage - 1}"
+							class="prev">← Trước</a>
+					</c:if>
+
+					<c:forEach var="i" begin="1" end="${totalPages}">
+						<a href="clientHome?action=list&page=${i}"
+							class="${i == currentPage ? 'active' : ''}">${i}</a>
+					</c:forEach>
+
+					<c:if test="${currentPage < totalPages}">
+						<a href="clientHome?action=list&page=${currentPage + 1}"
+							class="next">Tiếp →</a>
+					</c:if>
 				</div>
 			</div>
 		</section>
 	</div>
 
 
-
-
-
-
-
-	<footer>
-		<div class="footer_container">
-			<span>Bản quyền thuộc nhóm tác giả cuốn sách "Giáo trình lập
-				trình Java 2"</span>
-		</div>
-	</footer>
+	<jsp:include page="_footer.jsp"></jsp:include>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

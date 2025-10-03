@@ -5,35 +5,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login</title>
 <link rel="stylesheet" href="css/login.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
 
-	<!-- Hiển thị thông báo lỗi nếu có -->
-	<c:if test="${not empty error}">
-		<p style="color: red;">${error}</p>
-	</c:if>
+	<jsp:include page="_header.jsp"></jsp:include>
 
-	<form action="login" method="POST" id="loginForm">
-		<h2>Đăng nhập</h2>
-		<p>Tên đăng nhập:</p>
-		<input type="text" name="username" value="${rememberedUser}" required
-			class="input-login"> <br>
+	<div class="container-form-login">
+		<form action="login" method="POST" class="form-login">
+			<h2>Đăng nhập</h2>
+			<input type="text" name="username" value="${rememberedUser}" required placeholder="Tên đăng nhập "
+				class="input-login"> <br>
 
-		<p>Mật khẩu:</p>
-		<input type="password" name="password" required class="input-login">
-		<br>
-		<br>
-		<c:if test="${not empty error}">
-			<p class="c-error">${error}</p>
-		</c:if>
+			<input type="password" name="password" required class="input-login" placeholder="Mật khẩu">
+			<br> <br>
+			<c:if test="${not empty error}">
+				<p class="c-error">${error}</p>
+			</c:if>
 
-		<label> <input type="checkbox" name="remember"> Ghi
-			nhớ đăng nhập
-		</label> <br>
-		<br> <input type="submit" value="Đăng nhập">
-		<a href="index.jsp" id="exitHome">Quay về trang chủ.</a>
-	</form>
+			<label> <input type="checkbox" name="remember" class="remember-login"> Ghi
+				nhớ đăng nhập
+			</label> <br> <br> <input type="submit" value="Đăng nhập" class="login-submit">
+			<div  id="exitHome">
+				<a href="index.jsp">Quay về trang chủ.</a>
+			</div>
+		</form>
+	</div>
+	
+	
+	<jsp:include page="_footer.jsp"></jsp:include>
 </body>
 </html>

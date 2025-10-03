@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,17 +76,22 @@ public class BookServlet extends HttpServlet {
         String author = req.getParameter("author");
         String priceStr = req.getParameter("price");
         String imagePath = req.getParameter("image_path");
+        String quantityInStock = req.getParameter("quantityInStock");
+		String detail = req.getParameter("detail");
+
 
         float price = (priceStr != null && !priceStr.isEmpty()) ? Float.parseFloat(priceStr) : 0;
-
+        float quantity = (quantityInStock != null && !quantityInStock.isEmpty()) ? Float.parseFloat(quantityInStock) : 0;
+		LocalDateTime createDate = LocalDateTime.now();
+		
         if (idStr == null || idStr.isEmpty()) {
             // thêm mới
-            Book newBook = new Book(0, title, author, price, imagePath);
+            Book newBook = new Book(0, title, author, price, imagePath, quantity, detail, createDate);
             bookService.insertBook(newBook);
         } else {
             // cập nhật
             int id = Integer.parseInt(idStr);
-            Book updateBook = new Book(id, title, author, price, imagePath);
+            Book updateBook = new Book(0, title, author, price, imagePath, quantity, detail, createDate);
             bookService.updateBook(updateBook);
         }
 

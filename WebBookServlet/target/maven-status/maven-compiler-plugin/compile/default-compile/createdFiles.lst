@@ -1,8 +1,0 @@
-controller\LoginServlet.class
-dao\DBConnection.class
-controller\ClientHomeServlet.class
-model\Book.class
-controller\AdminHomeServlet.class
-service\BookService.class
-controller\BookServlet.class
-controller\HomeServlet.class

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Console;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,15 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDao;
+import model.User;
+import untils.Constant;
+
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns = { "/login","/admin"})
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "1";
-
+	private UserDao userDao = new UserDao();
     
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,12 +48,14 @@ public class LoginServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");	
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String remember = request.getParameter("remember"); // on neu check
+		String remember = request.getParameter("remember"); 
 		
-		if(USERNAME.equals(username) && PASSWORD.equals(password)) {
+		User user = userDao.findUser(username, password);
+		if(user !=  null) {
 			// success
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
+			session.setAttribute(Constant.LOGINED_USER, user);
 			
 			if("on".equals(remember)) {
 				Cookie cookie = new Cookie("rememberedUser", username);
@@ -62,14 +67,18 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(cookie);
 			}
 			
-			response.sendRedirect("adminHome");
+			
+			byte role = user.isRole();
+			if(role == 1) {
+				response.sendRedirect("clientHome");
+			}else {
+				response.sendRedirect("adminHome");
+			}
 		}else {
 			request.setAttribute("error", "Sai ten dang nhap hoac mat khau ");
 			request.getRequestDispatcher("login.jsp").forward(request, response);;
 			
 		}
-		
-		
 		
 	}
 
