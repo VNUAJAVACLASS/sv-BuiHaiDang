@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<!--Project sẽ kế thừa cấu hình, dependency management, plugin, properties... từ parent này.-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.6</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+	<!--tên nhóm (group) của dự án, thường đại diện cho tổ chức, công ty hoặc đơn vị phát triển
+		GroupId thường đặt theo chuẩn tên miền ngược (reverse domain) để tránh trùng lặp.-->
+	<groupId>vnua.fita.tthieu</groupId>
+	
+	<!--Tên sản phẩm project khi build, là tên thư mục hoặc tên file JAR/WAR khi build-->
+	<artifactId>ProjectApiApplication</artifactId>
+	
+	<!--SNAPSHOT chỉ trạng thái phát triển (chưa ổn định, có thể thay đổi liên tục).
+		Khi phát hành chính thức, thường bỏ -SNAPSHOT-->
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<!--Tên hiển thị của project, dùng cho mục đích mô tả hoặc trình bày trong các công cụ quản lý project-->
+	<name>ProjectApiApplication</name>
+	<description>Quick Start With Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>21</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId> <!--Sử dụng JPA, sửa thành JDBC nếu muốn-->
+		</dependency>
+		
+		<!--Thư viện Spring Web gồm: Spring MVC (web mvc hoặc restful), Tomcat Embedded Server
+			Jackson (chuyển đổi qua lại JavaObject và JSON cần cho Restful)
+			Hibernate Validator để hỗ trợ kiểm tra dữ liệu đầu vào
+			Logback và các thư viện liên quan để ghi log.
+		 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId> <!--SpringBoot có cơ chế quản lý phụ thuộc, phiên bản-->
+			<scope>runtime</scope> <!-- runtime: thư viện chỉ cần khi chạy, ko cần lúc compile -->
+		</dependency>
+		
+		<!--Bao gồm nhiều thư viện test như: JUNIT, Mockito, AssertJ, SpringTest...
+			scope là test nghĩa là dependency này chỉ được thêm vào classpath trong quá trình test, 
+			không được đóng gói hoặc dùng ở môi trường production-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!--Plugin chính do Spring Boot cung cấp để hỗ trợ các tác vụ build cho ứng dụng Spring Boot khi dùng Maven-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
